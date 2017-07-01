@@ -58,6 +58,7 @@ namespace Scratch.Widgets {
             buffer.highlight_syntax = true;
             smart_home_end = Gtk.SourceSmartHomeEndType.AFTER;
             buffer.mark_set.connect (on_mark_set);
+            highlight_current_line = true;
             // Create common tags
             this.warning_tag = new Gtk.TextTag ("warning_bg");
             this.warning_tag.background_rgba = Gdk.RGBA () { red = 1.0, green = 1.0, blue = 0, alpha = 0.8 };
@@ -192,8 +193,7 @@ namespace Scratch.Widgets {
             show_right_margin = Scratch.settings.show_right_margin;
             right_margin_position = Scratch.settings.right_margin_position;
             show_line_numbers = Scratch.settings.show_line_numbers;
-            highlight_current_line = Scratch.settings.highlight_current_line;
-            buffer.highlight_matching_brackets = Scratch.settings.highlight_matching_brackets;
+
             if (settings.draw_spaces == ScratchDrawSpacesState.ALWAYS) {
                 draw_spaces = Gtk.SourceDrawSpacesFlags.TAB;
                 draw_spaces |= Gtk.SourceDrawSpacesFlags.SPACE;
@@ -217,8 +217,6 @@ namespace Scratch.Widgets {
             Scratch.settings.show_line_numbers = show_line_numbers;
             Scratch.settings.show_right_margin = show_right_margin;
             Scratch.settings.right_margin_position = (int) right_margin_position;
-            Scratch.settings.highlight_current_line = highlight_current_line;
-            Scratch.settings.highlight_matching_brackets = buffer.highlight_matching_brackets;
             Scratch.settings.spaces_instead_of_tabs = insert_spaces_instead_of_tabs;
             Scratch.settings.indent_width = (int) tab_width;
             Scratch.settings.font = this.font;
@@ -232,7 +230,6 @@ namespace Scratch.Widgets {
             buffer.get_iter_at_line (out it, line-1);
             scroll_to_iter (it, 0, false, 0, 0);
             buffer.place_cursor (it);
-            set_highlight_current_line (true);
         }
 
         // Get selected text

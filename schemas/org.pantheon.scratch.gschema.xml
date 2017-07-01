@@ -89,11 +89,6 @@
 			<summary>Display Line Numbers</summary>
 			<description>Whether Scratch should display line numbers in the editing area.</description>
 		</key>
-		<key name="highlight-current-line" type="b">
-			<default>true</default>
-			<summary>Highlight Current Line</summary>
-			<description>Whether Scratch should highlight the current line.</description>
-		</key>
 		<key name="highlight-matching-brackets" type="b">
 			<default>false</default>
 			<summary>Highlight Matching Brackets</summary>

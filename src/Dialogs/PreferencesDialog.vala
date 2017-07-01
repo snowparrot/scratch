@@ -27,7 +27,6 @@ namespace Scratch.Dialogs {
         private Gtk.Stack main_stack;
         private Gtk.StackSwitcher main_stackswitcher;
 
-        Gtk.Switch highlight_current_line;
         Gtk.Switch highlight_matching_brackets;
         Gtk.Switch spaces_instead_of_tabs_switch;
         Gtk.Switch autoindent_switch;
@@ -142,9 +141,6 @@ namespace Scratch.Dialogs {
 
             var editor_header = new SettingsHeader (_("Editor"));
 
-            var highlight_current_line_label = new SettingsLabel (_("Highlight current line:"));
-            highlight_current_line = new SettingsSwitch ("highlight-current-line");
-
             var highlight_matching_brackets_label = new SettingsLabel (_("Highlight matching brackets:"));
             highlight_matching_brackets = new SettingsSwitch ("highlight-matching-brackets");
 
@@ -189,21 +185,19 @@ namespace Scratch.Dialogs {
             Scratch.settings.schema.bind ("use-system-font", select_font, "sensitive", SettingsBindFlags.INVERT_BOOLEAN);
 
             content.attach (editor_header, 0, 0, 3, 1);
-            content.attach (highlight_current_line_label, 0, 1, 1, 1);
-            content.attach (highlight_current_line, 1, 1, 1, 1);
-            content.attach (highlight_matching_brackets_label, 0, 2, 1, 1);
-            content.attach (highlight_matching_brackets, 1, 2, 1, 1);
-            content.attach (draw_spaces_label, 0, 3, 1, 1);
-            content.attach (draw_spaces_combo, 1, 3, 2, 1);
-            content.attach (line_numbers_label, 0, 4, 1, 1);
-            content.attach (line_numbers, 1, 4, 1, 1);
+            content.attach (highlight_matching_brackets_label, 0, 1, 1, 1);
+            content.attach (highlight_matching_brackets, 1, 1, 1, 1);
+            content.attach (draw_spaces_label, 0, 2, 1, 1);
+            content.attach (draw_spaces_combo, 1, 2, 2, 1);
+            content.attach (line_numbers_label, 0, 3, 1, 1);
+            content.attach (line_numbers, 1, 3, 1, 1);
 #if GTKSOURCEVIEW_3_18
-            content.attach (show_mini_map_label, 0, 5, 1, 1);
-            content.attach (show_mini_map, 1, 5, 1, 1);
+            content.attach (show_mini_map_label, 0, 4, 1, 1);
+            content.attach (show_mini_map, 1, 4, 1, 1);
 #endif
-            content.attach (show_right_margin_label, 0, 6, 1, 1);
-            content.attach (show_right_margin, 1, 6, 1, 1);
-            content.attach (right_margin_position, 2, 6, 1, 1);
+            content.attach (show_right_margin_label, 0, 5, 1, 1);
+            content.attach (show_right_margin, 1, 5, 1, 1);
+            content.attach (right_margin_position, 2, 5, 1, 1);
             content.attach (font_header, 0, 7, 3, 1);
             content.attach (style_scheme_label, 0, 8, 1, 1);
             content.attach (style_scheme, 1, 8, 2, 1);
